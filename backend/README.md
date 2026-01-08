@@ -11,6 +11,12 @@
 4. 並使用 `uv sync --frozen` 安裝套件
    - 參數 `--frozen` 是為了避免自動更新既有套件
 
+# 新增、移除後端套件
+## 新增
+- 建議使用 `uv add`，因為使用 `uv pip install` 的話，可能會造成遺留不再需要的套件。
+  - 詳細原因可參考 [這篇文章](https://dev.to/codemee/shi-yong-uv-guan-li-python-huan-jing-53hg#:~:text=r%20%2Dfo%20.%5Cp313%5C-,%E7%AE%A1%E7%90%86%E5%A5%97%E4%BB%B6,-uv%20%E6%8F%90%E4%BE%9B%E6%9C%89)
+## 移除
+- 建議使用 `uv remove`
 
 # 後端啟動方式
 1. 路徑切換到 root/backend
