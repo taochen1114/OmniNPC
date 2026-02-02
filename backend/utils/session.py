@@ -1,6 +1,5 @@
 from typing import Dict, List, Literal, TypedDict
-
-# from prompts.prompt_store import DEFAULT_SYSTEM_PROMPT
+from prompts.prompt_store import DEFAULT_SYSTEM_PROMPT
 
 
 Role = Literal["system", "user", "assistant"]
@@ -18,8 +17,7 @@ class ChatSession:
         self.chat_memory: List[ChatMessage] = [
             {
                 "role": "system",
-                # "content": DEFAULT_SYSTEM_PROMPT,
-                "content": "a3s21da3s1d32",
+                "content": DEFAULT_SYSTEM_PROMPT,
             }
         ]
 

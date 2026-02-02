@@ -1,5 +1,5 @@
 from langchain_openai import ChatOpenAI
-from utils.config import MODEL, API_KEY
+from utils.config import MODEL, OPENAI_API_KEY
 
 
 def get_openai(model=MODEL, **kwargs):
@@ -13,5 +13,5 @@ def get_openai(model=MODEL, **kwargs):
     Returns:
         ChatOpenAI: 初始化的模型實例。
     """
-    llm = ChatOpenAI(model=model, api_key=API_KEY, **kwargs)  # 傳遞額外參數
+    llm = ChatOpenAI(model=model, api_key=OPENAI_API_KEY, **kwargs)  # 傳遞額外參數
     return llm

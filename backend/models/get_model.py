@@ -11,5 +11,4 @@ def get_model(model=MODEL):
         f"Unsupported model: {model}. Supported models: {sorted(SUPPORTED_MODELS)}."
         f"If you want to use {model}, please update chatbot/utils/config.py (SUPPORTED_MODELS)."
     )
-
     return None

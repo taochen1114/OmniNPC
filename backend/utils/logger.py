@@ -1,6 +1,7 @@
 import logging
 import sys
 import colorlog
+from utils.config import LOGGING_LEVEL
 
 
 def create_logger(level=logging.DEBUG):
@@ -25,4 +26,4 @@ def create_logger(level=logging.DEBUG):
     return logger
 
 
-logger = create_logger()
+logger = create_logger(LOGGING_LEVEL)

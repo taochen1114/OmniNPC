@@ -106,6 +106,8 @@ export function Avatar(props) {
   // const clone = useMemo(() => SkeletonUtils.clone(scene), [scene]);
   // const { nodes, materials } = useGraph(clone);
 
+  const DEFAULT_ANIMATION = 'Idle';
+
   const { animations } = useGLTF('/models/animations.glb');
   const { currentMessage, onMessagePlayed, audioRef, resetAudio } = useChat();
   const [facialExpression, setFacialExpression] = useState('');
@@ -114,7 +116,10 @@ export function Avatar(props) {
   const [winkLeft, setWinkLeft] = useState(false);
   const [winkRight, setWinkRight] = useState(false);
   const [animation, setAnimation] = useState(
-    animations.find((a) => a.name === 'Idle') ? 'Idle' : animations[0].name // Check if Idle animation exists otherwise use first animation
+    // Check if Idle animation exists otherwise use first animation
+    animations.find((a) => a.name === DEFAULT_ANIMATION)
+      ? DEFAULT_ANIMATION
+      : animations[0].name
   );
   const group = useRef();
   const { actions, mixer } = useAnimations(animations, group);
@@ -122,7 +127,7 @@ export function Avatar(props) {
   useEffect(() => {
     try {
       if (!currentMessage) {
-        setAnimation('Idle');
+        setAnimation(DEFAULT_ANIMATION);
         return;
       }
       setAnimation(currentMessage.animation);
