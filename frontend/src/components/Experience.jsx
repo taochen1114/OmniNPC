@@ -19,11 +19,12 @@ export const Experience = (props) => {
   }, []);
 
   useEffect(() => {
-    if (isInConversation) {
-      setCameraToSeeRight();
-    } else {
-      setCameraToSeeFront();
-    }
+    setCameraToSeeRight();
+    // if (isInConversation) {
+    //   setCameraToSeeRight();
+    // } else {
+    //   setCameraToSeeFront();
+    // }
   }, [isInConversation]);
 
   return (

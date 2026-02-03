@@ -14,7 +14,8 @@
 
 body {
   margin: 0;
-  background-image: linear-gradient(90deg, #0022ff 0%, #4f93ff 100%);
+  /* background-image: linear-gradient(90deg, #0022ff 0%, #4f93ff 100%); */
+  background-image: url('/assets/bg_img_2026.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

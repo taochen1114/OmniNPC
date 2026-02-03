@@ -558,7 +558,8 @@ export const UI = ({ hidden, ...props }) => {
       <div
         className={clsx(
           'flex flex-col',
-          isInConversation ? 'justify-between' : 'justify-end'
+          // isInConversation ? 'justify-between' : 'justify-end'
+          isInConversation ? 'justify-end' : 'justify-end'
         )}
         style={{
           minHeight: 140, // 140 = 48 + 20 + 72

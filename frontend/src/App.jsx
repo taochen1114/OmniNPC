@@ -28,7 +28,8 @@ function App() {
       <div
         className={clsx(
           'flex h-full w-full items-center',
-          isInConversation ? 'pr-[4%]' : 'justify-center'
+          // isInConversation ? 'pr-[4%]' : 'justify-center'
+          isInConversation ? 'pr-[4%]' : 'pr-[4%]'
         )}
       >
         {/* 人物 */}
@@ -46,7 +47,8 @@ function App() {
         <motion.div
           className={clsx(
             'absolute bottom-[40px] w-[calc(100dvw-480px-40px)]',
-            isInConversation ? 'left-[480px]' : ''
+            // isInConversation ? 'left-[480px]' : ''
+            isInConversation ? 'left-[480px]' : 'left-[480px]'
           )}
           layout
           transition={transitionConfig}
