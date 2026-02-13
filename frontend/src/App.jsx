@@ -4,6 +4,7 @@ import { Canvas } from '@react-three/fiber';
 import { Leva } from 'leva';
 import { Experience } from './components/Experience';
 import { UI } from './components/UI';
+import { CameraWebSocket } from './components/CameraWebsocket';
 import { clsx } from 'clsx';
 import { motion } from 'motion/react';
 import { ANIMATION_CONFIG } from './config/animation';
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <div id="app" className="h-dvh overflow-hidden">
+      <CameraWebSocket />
       <Loader />
       <Leva hidden />
       <div

@@ -5,8 +5,16 @@ load_dotenv()
 import base64
 import time
 import uvicorn
+import json
+import asyncio
 
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import (
+    FastAPI,
+    Request,
+    HTTPException,
+    WebSocket,
+    WebSocketDisconnect,
+)
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -22,6 +30,7 @@ from utils.session import (
     sessions,
     get_or_create_chat_session,
 )
+from utils.model import model
 
 
 app = FastAPI()
@@ -145,6 +154,34 @@ async def chat(request: Request):
     logger.warning("response_dict", response_dict)
 
     return JSONResponse(content={"messages": [response_dict]}, status_code=200)
+
+
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+
+    is_processing = False
+
+    try:
+        while True:
+            frame = await websocket.receive_bytes()
+
+            # 如果正在推論，直接丟棄這張
+            if is_processing:
+                continue
+
+            is_processing = True
+
+            # 用 thread 執行推論避免卡 event loop
+            loop = asyncio.get_event_loop()
+            result = await loop.run_in_executor(None, model.predict, frame)
+
+            await websocket.send_text(json.dumps(result))
+
+            is_processing = False
+
+    except WebSocketDisconnect:
+        print("Client disconnected")
 
 
 if __name__ == "__main__":

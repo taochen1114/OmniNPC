@@ -10,4 +10,6 @@ dependencies = [
     "fastapi[standard]>=0.128.0",
     "langchain-openai>=1.1.7",
     "langgraph>=1.0.5",
+    "numpy>=2.4.2",
+    "pillow>=12.1.0",
 ]
